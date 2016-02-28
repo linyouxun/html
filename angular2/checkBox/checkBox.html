@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+		<script src="js/jquery-2.1.1.min.js"></script>
+    	<script src="js/bootstrap.min.js?v=3.4.0"></script>
+	</head>
+	<body>
+		<input type="checkbox" class="i-checks">自动登录
+		<hr/>	
+		<input type="radio" name="a" class="i-checks">自动登录
+		<br>
+		<input type="radio" name="a" class="i-checks">自动登录
+		<div class="radio i-checks">
+            <label>
+                <input type="radio" disabled="" checked="" value="option2"> <i></i> 选项3（选中并禁用）</label>
+        </div>
+        <div class="radio i-checks">
+            <label>
+                <input type="radio" checked="" value="option2"> <i></i> 选项3（选中并禁用）</label>
+        </div>
+        <div class="radio i-checks">
+            <label>
+                <input type="radio" disabled="" value="option2"> <i></i> 选项3（选中并禁用）</label>
+        </div>
+			
+			
+		<script src="js/plugins/iCheck/icheck.min.js"></script>
+	    <script>
+	        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+	    </script>	
+	</body>
+</html>

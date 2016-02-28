@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="framework/bootstrap-3.0.0/css/bootstrap.css"/>
+		<script type="text/javascript" src="framework/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<style type="text/css">
+			.my-Input{
+				
+			}
+			/*.my-Form{
+				background: gray;
+			}
+			.my-Form.ng-invalid{
+				background: blue;
+			}
+			.my-Form.ng-dirty{
+				background: red;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp">
+			<div  ng-controller="myCtrl">
+				<form class="my-Form" name="myForm" novalidate>
+					<input  type="text" class="my-Input" name="myFName" ng-model="user.fName" required/>
+					<br/>
+					<span ng-show="myForm.myFName.$dirty && myForm.myFName.$invalid">required!</span>
+					<input type="text" class="my-Input" name="myLName" ng-model="user.lName" required/>
+					<span ng-show="myForm.myLName.$dirty && myForm.myLName.$invalid">required!</span>
+					<br>{{user}}
+						<br>
+							{{myForm.myFName.$invalid}}
+					<!--<div ng-hide="!(myForm.myFName.$dirty && myForm.myFName.$invalid)">nohao</div>-->
+				</form>
+				
+			</div>
+		</div>
+		<script>
+			angular.module('myApp',[]).controller('myCtrl',["$scope",function($scope){
+				
+			}])
+		</script>
+	</body>
+</html>

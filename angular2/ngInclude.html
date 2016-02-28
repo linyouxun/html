@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+	</head>
+	<body>
+		<div ng-app="">
+			<div ng-init="templates=[{name:'1.html'},{name:'2.html'}];template=templates[1]">
+				<select ng-model="template" ng-options="item.name for item in templates">
+					<!--<option	ng-repeat="item in templates" ng-bind="item.name"/>-->
+				</select>
+				<br/>{{template}}
+				<br>
+				<div>
+					<div ng-include="template.name">ni</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

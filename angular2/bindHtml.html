@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="framework/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<script type="text/javascript" src="framework/angular-1.3.0.14/angular-sanitize.js">
+		</script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<script src="js/bindHtml.js"></script>
+		<div ng-app="myApp">
+			<div ng-controller="myCtrl">
+				{{test}}
+				<p ng-bind-html="dataHtml"></p>
+				<p ng-bind="data+data"></p>
+				<p ng-bind-template="{{data}} {{data}}"></p>
+				a<input class="myInput" type="text" placeholder="sss"/><br>
+				b<input class="myInput" type="text" placeholder="sss"/>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var input = document.getElementsByClassName('myInput')[0]
+			var ee 
+			input.addEventListener('blur',function(e){
+				ee = e
+				console.log(e)
+				e.target.hidden = true
+				e.target.style.background = "red"
+			},true);
+			var input2 = document.getElementsByClassName('myInput')[1]
+			input2.addEventListener('blur',function(e){
+				ee.target.hidden = false
+			},true)
+		</script>
+	</body>
+</html>

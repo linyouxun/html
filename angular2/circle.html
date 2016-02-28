@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.divClass{
+				position: absolute;
+				width: 20px;
+				height: 20px; 
+				background-color: red; 
+			}
+		</style>
+		
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl" ng-cloak>
+		{{text}}
+		
+		<div id="div1" style="background: green; position: absolute; width: 20em; height: 20em;" ng-click="clickFun($event)">
+			
+			<div ng-repeat="item in list" class="divClass" style="top:{{item.top}}; left: {{item.left}};">
+				{{$index}}
+			</div>
+		</div>
+		
+		
+		<script src="js/angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module("myApp",[])
+			app.controller('myCtrl',['$scope',function($scope){
+				$scope.text = "text"
+				$scope.list = [{top:'20px',left:'20px'},{top:'20px',left:'40px'},{top:'20px',left:'60px'}]
+				var radius = 80
+				$scope.drawCircle = function(num){
+					$scope.list = []
+					for (var i = 0;i < num;i++) {
+						var data = {
+							top:100 + 80 * Math.sin(Math.PI*2/num * i)+'px',
+							left:100 + 80 * Math.cos(Math.PI*2/num * i)+'px',
+						}
+//						console.log(data)
+						$scope.list.push(data)
+					}
+				}
+				$scope.drawCircle(15)
+				
+				$scope.clickFun = function(data){
+				}
+				
+			}])
+		</script>
+		
+	</body>
+</html>

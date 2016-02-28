@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>layer-更懂你的web弹窗解决方案</title>
+<script src="../js/jquery.js"></script>
+<script src="layer/layer.js"></script>
+</head>
+<body>
+<button onclick='tipMassage()'>提示消息</button>
+<button onclick='tipMassage2()'>提示消息2</button>
+<button onclick='tipMassage3()'>提示消息3</button>
+<button onclick='tipMassage4()'>提示消息4</button>
+<button onclick='tipMassage5()'>提示消息5</button>
+<button onclick='tipMassage6()'>提示消息6</button>
+<button onclick='tipMassage7()'>提示消息7</button>
+<button onclick='tipMassage8()'>分页显示</button>
+<button onclick='tipMassage9()'>提示消息9</button>
+<button onclick='tipMassage10()'>提示消息10</button>
+<button onclick='tipMassage11()'>提示消息11</button>
+
+
+<span id="massage">nihao</span>
+
+<button onclick="openFrame()">打开frame</button>
+
+<script>
+var indexItem = 1;
+function tipMassage11(){}
+function tipMassage10(){}
+function tipMassage9(){
+	layer.open({
+		type: 2,
+			title: false,
+			shadeClose: false,
+			shade: 0.5,
+			area: ['80%', '80%'],
+			content: 'childHtml.html', //iframe的url
+			btn: ['确定', "取消"],
+			success: function(layero, index) {
+				body = layer.getChildFrame('body', index);
+				iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			},
+			yes: function(index) {
+				iframeWin.userSelectSubmit(index);
+			},
+			cancel: function() {}
+	})
+}
+function tipMassage8(){
+					layer.tab({
+					    area: ['600px', '300px'],
+					    tab: [{
+					        title: 'TAB1', 
+					        content: '内容1'
+					    }, {
+					        title: 'TAB2', 
+					        content: '内容2'
+					    }, {
+					        title: 'TAB3', 
+					        content: '内容3'
+					    }]
+					}); 
+				}
+function tipMassage(){
+					layer.msg('欢迎使用layer',{time:3000});
+				}
+function tipMassage2(){
+					layer.tips('试试相册模块？', '#massage', {tips: 1}) //吸附的元素标记
+				}
+function tipMassage3(){
+					layer.alert('酷毙了', {icon: 1});
+				}
+function tipMassage4(){
+					layer.confirm('纳尼？', {
+					    btn: ['按钮一', '按钮二', '按钮三'] //可以无限个按钮
+					    ,btn3: function(index, layero){
+					        //按钮【按钮三】的回调
+					        console.log(index);
+					    }
+					}, function(index, layero){
+					    //按钮【按钮一】的回调
+					    console.log(index);
+					}, function(index){
+					    //按钮【按钮二】的回调
+					    console.log(index);
+					});
+//					//eg2
+//					layer.open({
+//					    content: 'test'
+//					    ,btn: ['按钮一', '按钮二', '按钮三']
+//					    ,btn1: function(index, layero){ //或者使用btn1
+//					        //按钮【按钮一】的回调
+//					        console.log(index);
+//					    },btn2: function(index){ //或者使用btn2
+//					        //按钮【按钮二】的回调
+//					        console.log(index);
+//					    },btn3: function(index, layero){
+//					        //按钮【按钮三】的回调
+//					        console.log(index);
+//					    }
+//					});
+				}
+function tipMassage5(){
+					layer.open({
+					    content: '测试回调',
+					    yes: function(index, layero){
+					        //do something
+					        layer.close(index); //如果设定了yes回调，需进行手工关闭
+					    }
+					});  
+				}
+function tipMassage6(){
+					layer.msg('同上', {
+					    icon: 0,
+					    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+					    layer.msg('同上', {
+						    icon: 1,
+						    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+						    layer.msg('同上', {
+							    icon: 2,
+							    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+							}, function(){
+							    layer.msg('同上', {
+								    icon: 3,
+								    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+								}, function(){
+								    layer.msg('同上', {
+									    icon: 4,
+									    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+									}, function(){
+									    //do something
+									});
+								});
+							});
+						});
+					});  
+				}
+function tipMassage7(){
+					//	{
+					//	    formType: 1, //输入框类型，支持0（文本）默认1（密码）2（多行文本）
+					//	    value: '', //初始时的值，默认空字符
+					//	    maxlength: 140, //可输入文本的最大长度，默认500
+					//	}
+					layer.prompt({
+					    formType: 2,
+					    value: '初始值',
+					    title: '请输入值'
+					}, function(value, index, elem){
+					    alert(value); //得到value
+					    layer.close(index);
+					});
+				}
+
+function openFrame(){
+					layer.open({
+					    type: 2, 
+					    content: ['http://sentsin.com','no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+					}); 
+				}
+
+!function(){
+
+//加载扩展模块
+layer.config({
+    extend: 'extend/layer.ext.js'
+});
+
+layer.ready(function(){ 
+//  //官网欢迎页
+//  layer.open({
+//      type: 2,
+//      skin: 'layui-layer-lan',
+//      title: 'layer弹层组件',
+//      fix: false,
+//      shadeClose: true,
+//      maxmin: true,
+//      area: ['1000px', '500px'],
+//      content: 'http://layer.layui.com/?form=local',
+//      end: function(){
+////          layer.tips('试试相册模块？', '#photosDemo', {tips: 1})
+//			layer.msg('欢迎使用layer');
+//      }
+//  });
+});
+
+}();
+</script>
+</body>
+</html>

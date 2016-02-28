@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.js"></script>
+		<script src="angular-ui-event/dist/event.js"></script>
+	</head>
+	<body>
+		
+		<div ng-app="myApp" ng-controller="myCtrl">
+			
+			<!--<input ui-event="{ focus : 'counter++', blur : 'blurCallback($event)' }"/>
+			<br/>
+			{{counter}}<br/>
+			<button ng-click="funC($event)">nihao</button>
+			<input type="text" id="inputOne"/>
+			<span type="text" id="inputTwo">nihao</span>-->
+			
+			
+			<input ui-event="{  mousemove : 'someCallback($event)',blur : 'someCallback2($event)', }">
+				
+			{{point.x}}
+			{{point.y}}
+		</div>
+		
+		<script type="text/javascript">
+//			var app = angular.module('myApp',['ui.event'])
+			var app = angular.module('myApp',[])
+			app.directive('uiEvent', function() {
+			  return function( scope, elem, attrs ) {
+			    elem.bind('blur', function() {
+			      scope.$apply(attrs.ngBlur);
+			    });
+			  };
+			});
+//			app.inject('ui.event')
+			app.controller('myCtrl',["$scope",function($scope){
+				
+				$scope.counter = 0;
+				$scope.someCallback = function(evt){
+					console.log(evt)
+					$scope.point = evt
+				}
+				$scope.someCallback2 = function(evt){
+					console.log(evt)
+				}
+				
+//				$scope.modelData = "123.3"
+//				$scope.counter = 0 
+//				$scope.blurCallback = function(evt) {
+////					alert('Goodbye. Input content is: ' + evt.target.value);
+//					console.log(evt)
+//				};
+//				$scope.funC = function(evt){
+//					console.log(evt)
+//					console.log(evt.target.parentNode)
+////					console.log(evt.type)
+////					evt.type="blur"
+////					var input = document.getElementById("inputOne");
+////					console.log(input.attr("value","nihao"))
+//					var span = document.getElementById("inputTwo");
+//					console.log(span.localName)
+//					span.innerText="nihao2"
+//				}
+			}])
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="framework/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/angular.js">
+		</script>
+	</head>
+	<body>
+		<div ng-app="myApp">
+			<div ng-controller="myCtrl">
+				{{name}}
+			</div>
+			<div ng-controller="myCtrl2">
+				{{name}}
+			</div>
+			<div ng-controller="myCtrl3">
+				{{name}}
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			angular.module('myApp',[])
+			.controller('myCtrl',["$scope",function($scope){
+				$scope.name='ss'
+			}])
+			.controller('myCtrl2',["$scope",function($scope){
+				$scope.name='ss2'
+			}])
+			.controller('myCtrl3',controller3)
+			function controller3($scope){
+				$scope.name="ss3"
+			}
+			controller3.$inject = ['$scope'];
+		</script>
+	</body>
+</html>

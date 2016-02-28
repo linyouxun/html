@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js"></script>
+		
+		<script type="text/javascript" src="js/directive.js"></script>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="myCtrl">
+			<hello>
+				nihao2
+			</hello>
+			<!--<div hello></div>-->
+			<!--directive:hello-->
+			<!--<div class="hello" >
+			</div>-->
+			<li ng-repeat="item in list">
+				<test my-style name="{{name}}" case="data">
+				</test>
+			</li>
+			<input ng-model="data.name">
+			<!--<hello3>
+				helloWorld
+			</hello3>	-->
+			
+		</div>
+	</body>
+</html>

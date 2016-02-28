@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="framework/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<style type="text/css">
+			.odd{
+				color:red;
+			}
+			.even{
+				color:blue;
+			}
+		</style>
+		 <style>
+	        .classEven {
+	            color: red;
+	            font-size:40px
+	        }
+	        .classOdd {
+	            color: blue;
+	            font-size:30px
+	        }
+	    </style>
+	</head>
+	<body>
+		<div ng-app="">
+			<div ng-init="friends = [
+			  {name:'John', age:25, gender:'boy'},
+			  {name:'Jessie', age:30, gender:'girl'},
+			  {name:'Johanna', age:28, gender:'girl'},
+			  {name:'Joy', age:15, gender:'girl'},
+			  {name:'Mary', age:28, gender:'girl'},
+			  {name:'Peter', age:95, gender:'boy'},
+			  {name:'Sebastian', age:50, gender:'boy'},
+			  {name:'Erika', age:27, gender:'girl'},
+			  {name:'Patrick', age:40, gender:'boy'},
+			  {name:'Samantha', age:60, gender:'girl'}
+			]">
+			<ul style="list-style: none;border: 1px solid black;">
+				<input ng-model="data" />
+				<li ng-repeat="item in friends|filter:data as results">
+					{{$index+1}} {{item.name}}
+				</li>
+				<li ng-if="results.length==0"><span style="color: red;">没有数据</span></li>
+				{{data}}
+			</ul>
+			{{angular.version}}
+			
+			
+			<!--<ol  ng-init="names=['nihao','nihao2','nihao3','nihao4'];">
+				<li ng-repeat="item in names">
+					<span ng-class-even="'even'">
+						{{item}}
+					</span>
+				</li>
+			</ol>
+			<button ng-click="count=count+1" ng-init="count=0">{{count}}</button>
+			check me <input type="checkbox" ng-init="check=true" ng-model="check"/>
+			<br>
+				{{check}}
+				<br/>
+				<span ng-show="check" >nihao</span>
+				<br/>
+				<span ng-if="check">nihao</span>-->
+			
+		</div>
+	</body>
+</html>

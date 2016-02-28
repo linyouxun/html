@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<div ng-view></div>
+		<script src="js/angular.js"></script>
+		<script src="js/angular-route.js"></script>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module('myApp',['ngRoute'])
+		
+		app.controller('myCtrl',function($scope,$routeParams){
+			$scope.id = $routeParams.id
+		})
+		
+		app.config(function($routeProvider){
+			$routeProvider
+				.when('/',{
+					template:'<h1>nihao</h1>'
+				})
+				.when('/:id',{
+					controller:'myCtrl',
+					template:'<h1>nihao{{id}}</h1>'
+				})
+				.otherwise({
+					redirectTo:'/'
+				})
+		})
+		
+		
+		
+//		var app = angular.module('myApp',['ngRoute'])
+
+//app.controller('myCtrl',function($scope,$routeParams){
+//	$scope.text = $routeParams.name
+//})
+//
+//app.config(function($routeProvider){
+//	$routeProvider
+//		.when('/',{
+//			template:'<h1>nihao<h1>'
+//		})
+//		.when('/text/:name',{
+//			template:'<h1>nihao{{text}}<h1>',
+//			controller:'myCtrl'
+//		})
+//		.otherwise({
+//			redirectTo:'/'
+//		})
+//})
+		
+		
+	</script>
+</html>
